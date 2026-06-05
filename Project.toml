@@ -1,0 +1,16 @@
+name = "SimLab"
+uuid = "45e4aa5a-ba5f-4a67-80c1-10f686d142ca"
+authors = ["Dane <danearodriguez@gmail.com>"]
+version = "0.1.0"
+
+[deps]
+AlgebraicPetri = "4f99eebe-17bf-4e98-b6a1-2c4f205a959b"
+CairoMakie = "13f3f980-e62b-5c42-98c6-ff1f3baf88f0"
+Catlab = "134e5e36-593f-5add-ad60-77f754baafbe"
+DifferentialEquations = "0c46a032-eb83-5123-abaf-570d42b7fbaa"
+
+[compat]
+AlgebraicPetri = "0.10.0"
+CairoMakie = "0.15.11"
+Catlab = "0.17.5"
+DifferentialEquations = "8.0.0"

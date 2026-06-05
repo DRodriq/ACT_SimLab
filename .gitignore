@@ -1,0 +1,10 @@
+# local backups (e.g. pre-dependency-change snapshots)
+*.bak
+
+# editor / OS cruft
+.DS_Store
+*.swp
+
+# Julia
+/.julia-buildkite-cache/
+LocalPreferences.toml
