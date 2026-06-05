@@ -7,7 +7,7 @@ Petri nets and stratification, continuous (Decapodes) fields, and `Para(Optic)` 
 
 ---
 
-## The idea
+Motivations 
 
 Composition is functorial — you can assemble open systems lawfully and at scale. But behavior
 emerge: the qualitative dynamics of a composite are not a simple function of its parts'. The
