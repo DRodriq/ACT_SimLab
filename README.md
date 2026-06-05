@@ -23,6 +23,8 @@ Current pattern:
 
 A harness on dimensions and parameters exposes a transparent and finite set of variables in the system and opens them up to parameter sweeping and modular additions to the system.
 
+Part of this transparency and verification on the mechanics (justifying the formal model) is to also create a better surface for leveraging AI assisted development. The mechanics are verifiable, so the code is limited in how sloppy it can get and containing bugs. The parameter and dimension harness and composibility provides a more definite surface for agentic development to easily experiment with parameter sweeping, and compose or decompose sub systems for simple verification.
+
 Validated against closed-form **ground truth**:
 
 | model | result |
@@ -34,6 +36,8 @@ Validated against closed-form **ground truth**:
 
 ![Spatial Lotka–Volterra: oscillations and phase portrait](scripts/lv_minimal.png)
 
+## To-Do 
+Over-engineer the LV model and add in a decapode field effect for resource flow and transition population dynamics to Para(Optic) agents.
 
 *Built with [Catlab](https://github.com/AlgebraicJulia/Catlab.jl),
 [AlgebraicPetri](https://github.com/AlgebraicJulia/AlgebraicPetri.jl), and
