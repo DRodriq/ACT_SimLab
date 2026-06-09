@@ -7,6 +7,7 @@ include("subsystems.jl")
 include("composition.jl")
 include("sim.jl")
 include("viz.jl")
+include("harness.jl")
 
 using .Schema
 using .WorldGen
@@ -15,6 +16,7 @@ using .Subsystems
 using .Composition
 using .Sim
 using .Viz
+using .Harness
 
 # Schema
 export TileWorld, SchTileWorld
@@ -30,5 +32,7 @@ export geography, stratify
 export simulate, role_total, roles, process_keys
 # Visualization (NOTE: still positional — pending name-based rewrite, see docs/journal.md)
 export plot_aggregate, plot_phase, animate_grid
+# Harness: currency-agnostic engine, the Scenario forcing layer, characterization (classify/sweep)
+export Currency, Pool, Feed, Scenario, run_scenario, classify, sweep2, set_pool, set_feed, drifts, ssize, ssize_end
 
 end # module SimLab

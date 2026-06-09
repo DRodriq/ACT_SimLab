@@ -9,7 +9,7 @@ Petri nets and stratification, continuous (Decapodes) fields, and `Para(Optic)` 
 
 Motivations 
 
-Composition is functorial — you can assemble open systems lawfully and at scale. But behavior
+Composition is functorial — you can assemble open systems lawfully and at scale. But behaviors
 emerge: the qualitative dynamics of a composite are not a simple function of its parts'. The
 categorical machinery makes the structure rigorous and grounded so that the emergent behavior can be studied while minimizing implementation bugs or grappling with design patterns that bloat and obfuscate what we're trying to study and treats dynamics and relationships as first class objects. 
 (See [`docs/compositionality.md`](docs/compositionality.md).)
@@ -34,7 +34,30 @@ Validated against closed-form **ground truth**:
 | tri-trophic (exponential grass) | predator collapse — the fragility |
 | **Rosenzweig–MacArthur** (grass carrying capacity) | coexistence rescued; equilibria match analytics **to the digit** |
 
-![Spatial Lotka–Volterra: oscillations and phase portrait](scripts/lv_minimal.png)
+![Lotka–Volterra neutral cycle and phase portrait](experiments/lv-two-species/outputs/lv_cycle.png)
+
+## Repository layout
+
+The repo **mirrors the software**: the engine is fixed and small; everything that varies is a
+*forcing*. So the directory split *is* the conceptual split.
+
+- **`src/`** — the engine + harness (the invariant machinery). `using SimLab` exposes the `Scenario`
+  layer, the currency-agnostic engine (`run_scenario`), and characterization (`classify`, `sweep2`).
+- **`experiments/`** — the forcings layer made physical. Each subdir is one experiment =
+  a `Scenario` + a procedure + **co-located outputs**. *An experiment directory ↔ a Scenario instance.*
+- **`tools/`** — interactive instruments (dashboards, viz): *readers* of the harness.
+- **`docs/`** — the conceptual layer (`journal.md` the narrative; `compositionality.md`,
+  `community_modules.md`, `dynamics_field_guide.md` the thinking).
+
+## Running an experiment
+
+```
+julia --project=. experiments/<id>/run.jl      # writes experiments/<id>/outputs/
+```
+
+See [`experiments/README.md`](experiments/README.md) for the index. Start with
+[`experiments/igp-phase-diagram/`](experiments/igp-phase-diagram/) — the Holt–Polis IGP phase diagram,
+produced entirely by the harness (`Scenario → sweep2 → figure`).
 
 ## To-Do 
 Over-engineer the LV model and add in a decapode field effect for resource flow and transition population dynamics to Para(Optic) agents.

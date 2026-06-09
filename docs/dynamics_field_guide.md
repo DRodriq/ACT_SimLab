@@ -99,6 +99,31 @@ rival; outcome can depend on initial conditions (priority effects / alternative 
 *The mechanism behind "forest vs grassland" emerging — two flora types on shared soil/water.* ·
 Gause 1934; MacArthur consumer–resource theory.
 
+### Tri-trophic food chain
+Three levels `R→C→P`. · Three species, two predation links (chain of `pred_t` / web-as-data). ·
+**Signature:** **trophic cascade** — the apex suppresses the middle and *releases* the base (add a
+top predator → more plant); standing biomass need **not** pyramid (it's flow × residence time, not
+efficiency — so a long-lived top level can rival its prey in biomass). · *The baseline 3-level
+system.* · Hairston–Smith–Slobodkin 1960 ("green world"); Oksanen 1981.
+
+### Intraguild predation (IGP) / omnivory
+`R→C, R→P, C→P` — predator `P` eats both consumer `C` and their shared resource `R`. · A consumer
+that is also prey to a higher predator who *also* eats its food (three feeding edges). ·
+**Signature:** generically **exclusion of one consumer**, often **winner-take-all across a sharp
+threshold** as relative competitive ability shifts; three-way coexistence only in a narrow,
+productivity-dependent window. · *Whenever a predator is also a competitor of its prey (very common)
+— expect exclusion, not easy coexistence.* · Polis & Holt 1989; Holt & Polis 1997.
+
+### Apparent competition
+Two prey `A,B` share one predator `P` (`A→P, B→P`). · Two consumers feeding one predator. ·
+**Signature:** the two prey **suppress each other indirectly** through the shared predator (boost
+one → more predator → less of the other) — looks like competition with no resource overlap; can
+drive a prey extinct. · *Two prey of a shared predator; the indirect-effect twin of resource
+competition.* · Holt 1977.
+
+*These three-species **community modules** are the composable building blocks of food webs — full
+treatment and substrate mapping in `community_modules.md`.*
+
 ### Soil organic-matter pool models (CENTURY / RothC / Yasso)
 Multiple carbon **pools** (litter → fast → slow → passive) with **first-order** transfer and loss,
 rates modulated by temperature & moisture. · Pools = species; transfers = `death_t`/`move_t`-shaped
@@ -137,6 +162,8 @@ What you see in a run → what to suspect (the fast-ID layer):
 | Fixed-amplitude limit cycle (init-independent) | RM past Hopf / paradox of enrichment | check if enrichment is driving it |
 | Boom then crash to ~0 of the top level | consumer can't establish; over-enrichment | our rung-3 collapse |
 | One competitor → 0 | competitive exclusion | interspecific > intraspecific competition |
+| Winner-take-all switch across a threshold (which consumer survives flips) | IGP / competition-mediated exclusion | better resource-competitor wins; often bistable |
+| Adding a top predator raises the basal level | trophic cascade (food chain) | top-down control |
 | Two stable outcomes from different inits | alternative stable states / priority effects | bistability |
 | Kinks / regime switches across space | Liebig min, limiter switching | multi-resource |
 | Multi-exponential slow relaxation | pool model (soil C) | stiffness risk |
