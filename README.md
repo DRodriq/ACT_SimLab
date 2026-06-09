@@ -41,13 +41,13 @@ Validated against closed-form **ground truth**:
 The repo **mirrors the software**: the engine is fixed and small; everything that varies is a
 *forcing*. So the directory split *is* the conceptual split.
 
-- **`src/`** — the engine + harness (the invariant machinery). `using SimLab` exposes the `Scenario`
+- **`src/`** — the engine + harness (the (mostly) invariant machinery). `using SimLab` exposes the `Scenario`
   layer, the currency-agnostic engine (`run_scenario`), and characterization (`classify`, `sweep2`).
 - **`experiments/`** — the forcings layer made physical. Each subdir is one experiment =
   a `Scenario` + a procedure + **co-located outputs**. *An experiment directory ↔ a Scenario instance.*
 - **`tools/`** — interactive instruments (dashboards, viz): *readers* of the harness.
-- **`docs/`** — the conceptual layer (`journal.md` the narrative; `compositionality.md`,
-  `community_modules.md`, `dynamics_field_guide.md` the thinking).
+- **`docs/`** — the conceptual layer (`journal.md`; `compositionality.md`,
+  `community_modules.md`, `dynamics_field_guide.md`).
 
 ## Running an experiment
 
@@ -60,7 +60,7 @@ See [`experiments/README.md`](experiments/README.md) for the index. Start with
 produced entirely by the harness (`Scenario → sweep2 → figure`).
 
 ## To-Do 
-Over-engineer the LV model and add in a decapode field effect for resource flow and transition population dynamics to Para(Optic) agents.
+
 
 *Built with [Catlab](https://github.com/AlgebraicJulia/Catlab.jl),
 [AlgebraicPetri](https://github.com/AlgebraicJulia/AlgebraicPetri.jl), and

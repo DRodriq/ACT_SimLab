@@ -2,7 +2,7 @@
 
 **Status:** migrated — Petri-stratification engine; output path co-located.
 **Question:** What does the discrete tile-graph (stratified Petri) tri-trophic model look like
-evolving in space, rendered honestly per-cell?
+evolving in space, rendered per-cell?
 
 ## Scenario
 The stratified Petri model (`ECOSYSTEM_RM` over `grid_world(12)`) — prey/predator seeded centrally,
