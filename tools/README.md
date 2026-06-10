@@ -1,13 +1,11 @@
 # Tools — instruments
 
-Interactive **readers of the harness** — *not* experiments. They run/visualize the engine live
-(GLMakie needs a display, so run them locally from the REPL).
+Readers of the harness — *not* experiments. (A tool reads a `Scenario`; an experiment *is* one.)
 
-To be migrated here during triage:
-- `dashboard.jl` — discrete-grid GLMakie dashboard over the stratified Petri model
-  (`include` → `launch_dashboard()`).
-- `gallery.jl` — compositional subsystem gallery: trendline panels + a selectable spatial grid
-  (`include` → `launch_gallery()`).
-
-A tool reads the harness; an experiment *is* a Scenario. If a thing produces a one-shot figure from a
-fixed config, it's an experiment; if it's an interactive instrument you drive, it's a tool.
+- **`composition.jl`** — `composition_graph(scn, path; title)`: renders any `Scenario`'s food-web
+  structure (pools laid out by trophic level, feeds as solid "eats" arrows, detritus as the dashed
+  sink). Used by experiments to emit a composition graph next to their dynamics. CairoMakie, headless.
+- **`dashboard.jl`** — discrete-grid GLMakie dashboard over the stratified Petri model
+  (`include` → `launch_dashboard()`). Needs a display; run locally from the REPL.
+- **`gallery.jl`** — compositional subsystem gallery: trendline panels + a selectable spatial grid
+  (`include` → `launch_gallery()`). Needs a display.

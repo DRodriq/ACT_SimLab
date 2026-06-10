@@ -34,5 +34,7 @@ export simulate, role_total, roles, process_keys
 export plot_aggregate, plot_phase, animate_grid
 # Harness: currency-agnostic engine, the Scenario forcing layer, characterization (classify/sweep)
 export Currency, Pool, Feed, Scenario, run_scenario, classify, sweep2, set_pool, set_feed, drifts, ssize, ssize_end
+# Spatial layer: distribute a Scenario over an N×N grid + diffuse mobile pools
+export grid_edges, generate_spatial, run_spatial, drifts_spatial, role_field
 
 end # module SimLab

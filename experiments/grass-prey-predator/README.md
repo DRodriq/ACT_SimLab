@@ -1,19 +1,36 @@
-# Grass–Prey–Predator (RM coexistence) — PLANNED
+# Grass–Prey–Predator (RM coexistence)
 
-**Status:** planned (rebuild on the harness, K=1)
-**Question:** Does the harness reproduce Rosenzweig–MacArthur coexistence — grass carrying capacity
-rescuing the predator from the tri-trophic collapse?
+**Status:** validated
+**Question:** Does a carrying capacity (logistic grass) stabilize tri-trophic coexistence — and what
+happens without one?
 
-## Scenario (to build)
-One-currency biomass: **logistic grass → prey → predator**. Contrast exponential grass (predator
-collapse) vs logistic grass (coexistence rescued). Optionally sweep carrying capacity into a
-damping/regime map (the old `run_rm` K-sweep, as a `sweep2`).
+## Scenario
+One-currency biomass chain `grass → prey → predator`, run two ways: **logistic grass** (a carrying
+capacity, `crowd > 0`) vs **exponential grass** (`crowd = 0`). The composition is also rendered as a
+food-web graph via the shared `tools/composition.jl`.
 
 ## Run
-*(to be written — copy `../_template/`)* → `outputs/`.
+`julia --project=. experiments/grass-prey-predator/run.jl` → `outputs/{dynamics,composition}.png`.
+**Gate:** with logistic grass, all three coexist (`regime == :fixed`) and biomass is conserved.
+
+## Result
+- **Logistic grass → stable bounded coexistence** — grass/prey/predator damp to a fixed point.
+- **Exponential grass → runaway** — with no carrying capacity, grass and predator grow *unboundedly*
+  while the **prey (middle level) crashes** into wild near-extinction oscillations. No stable
+  coexistence.
+
+So the carrying capacity doesn't merely bound grass — it **stabilizes the whole chain**. (This is the
+Rosenzweig–MacArthur stabilization point; the sustained limit cycle / paradox of enrichment proper
+needs a saturating **Type II** response — a future engine primitive.)
+
+![dynamics](outputs/dynamics.png)
+
+**Composition graph** — the food web (solid "eats" arrows by trophic level) + the detritus sink
+(dashed loss edges):
+
+![composition](outputs/composition.png)
 
 ## Notes
-Rebuild of the old `scripts/run_rm.jl` (RM K-sweep) as a harness `Scenario`. See `docs/journal.md`
-(RM) and `docs/dynamics_field_guide.md` (Rosenzweig–MacArthur). *Note:* mass-action (Type I) RM is
-globally stable — the sustained limit cycle needs a saturating Type II response (a future engine
-primitive).
+First experiment to emit a **composition graph** as an output — via `tools/composition.jl`, a reusable
+reader that renders *any* `Scenario`'s structure. See `docs/journal.md` and
+[`docs/dynamics_field_guide.md`](../../docs/dynamics_field_guide.md) (Rosenzweig–MacArthur).

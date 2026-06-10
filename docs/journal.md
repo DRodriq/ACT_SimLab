@@ -716,3 +716,38 @@ DEC field); only harness experiments are Scenarios.
 scripts (recoverable from git). Each experiment carries its own README (Question/Scenario/Run+Gate/
 Result/Notes) and co-located `outputs/`; outputs are 1:1 with experiments. Package still loads; the
 three rebuilds' gates pass.
+
+**`grass-prey-predator` built + composition-graph output.** New tool `tools/composition.jl` —
+`composition_graph(scn, path)` renders any `Scenario`'s food web (pools by trophic level, feeds as
+"eats" arrows, detritus as a dashed sink); CairoMakie, headless, reusable. `experiments/grass-prey-
+predator/` (validated): `grass→prey→predator` run two ways. **Finding (corrected from "predator
+collapse"):** logistic grass → **stable bounded coexistence** (fixed point); exponential grass (no
+carrying capacity) → **runaway** — grass+predator blow up while the *prey* crashes into near-extinction
+oscillations. So the carrying capacity stabilizes the *whole chain*, not just grass (RM stabilization;
+the limit cycle proper needs Type II). Outputs: `dynamics.png` + `composition.png`. First experiment
+to emit a composition graph alongside its dynamics.
+
+---
+
+## 2026-06-08 (cont.) — Spatial harness + detritus per-currency outflow + engines doc
+
+Clarified (and documented in `docs/engines.md`): the lab has **multiple engines** — the currency
+**harness** (well-mixed *and now spatial*), the **Petri stratification** (spatial, `discrete-grid`),
+the **DEC field** engine (continuous), and `Para/Optic` agents (planned). This had gotten confusing.
+
+Two harness additions:
+- **Detritus per-currency outflow.** Dead pools now drain CLOSED currencies → available pool
+  (`mineralize`) as well as OPEN → sink (`decay`). The **carcass↔fertilizer quality axis EMERGES**
+  from energy leaving fast (→heat) while nutrient drains slow (→mineral) — *no aging primitive needed*
+  (the user's correction: detritus is a subsystem with differential outflow, not an imposed
+  transfer). Back-compat 8-arg `Pool` constructor so existing experiments are untouched.
+- **Spatial harness.** `generate_spatial(scn, N, mobile)` / `run_spatial`: replicate the Scenario over
+  an N×N grid, run local rules per tile, **diffuse** mobile pools (graph Laplacian), conserve
+  globally. The well-mixed Scenario *is* the per-tile subsystem — same stratification idea as Petri,
+  hand-built on the currency representation. `role_field`, `drifts_spatial`, `grid_edges` added.
+
+`experiments/spatial-foodweb/` (validated): `grass→prey→predator` on a 20×20 grid, prey/predator
+mobile, seeded centrally → a spatial tri-trophic **invasion** (prey front grazes a grass-depletion
+ring, predator builds in the wake with a trophic lag, grass recovers behind) — drift **1.4e-15** over
+400 tiles. The DEC field demo's target-pattern, now on the *population* engine. Any harness Scenario
+can now be spatialized for free.

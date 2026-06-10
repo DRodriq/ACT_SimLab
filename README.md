@@ -7,9 +7,10 @@ engine and the lab that surrounds it: a transparent forcing layer (`Scenario`), 
 dynamics engine, and a characterization layer that turns parameter- and structure-sweeps into regime
 maps.
 
-> **The engine is fixed and small; the lab is the product.** Everything that varies is a *forcing*;
-> the harness is the complete, uniform surface of forcings, and *characterization* — what regimes
-> emerge — is the output.
+> **An open-ended categorical exploration — no product, no finish line.** The categorical composition
+> work *is* the point; the LV/RM ecology is the verifiable testbed. The architecture is mid-realignment
+> to **one categorical composition discipline** — see [`docs/status.md`](docs/status.md) for the goal,
+> method, and current state (and `docs/drift_diagnosis.md` for why).
 
 ![IGP phase diagram, produced entirely by the harness](experiments/igp-phase-diagram/outputs/phase_diagram.png)
 
